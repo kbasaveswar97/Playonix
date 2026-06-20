@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO
+     SITE_IMAGES note: hero background image is set in base.css
+     via .hero-bg { background: url(...) }. To swap it, edit that
+     one rule in static/css/base.css — search for "HERO IMAGE SLOT".
+     ════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span>Corporate Sports Platform — India</div>
+    <h1 class="hero-h1">
+      Your Team<br>
+      <em>Competes.</em><br>
+      <span class="stroke">Connects.</span><br>
+      Belongs.
+    </h1>
+    <p class="hero-desc">Playonix runs year-round sports leagues, tournaments, and offsites for companies across India — turning colleagues into teammates.</p>
+    <div class="hero-ctas">
+      <a href="{% url 'contact' %}" class="btn-red" style="text-decoration:none;display:inline-flex;align-items:center;">Book a Free Demo →</a>
+      <button class="btn-white-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+    </div>
+    <!-- Trust chips removed (pre-launch, no real client logos yet) -->
+    <div class="hero-trust">
+      <span class="trust-label">Founding Cohort Now Open</span>
+      <div class="trust-logos">
+        <span class="trust-chip">Hyderabad · 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Cricket Leagues</span>
+    <span class="marquee-item">Football Tournaments</span>
+    <span class="marquee-item">Badminton Circuits</span>
+    <span class="marquee-item">Team Offsites</span>
+    <span class="marquee-item">Corporate Sports Days</span>
+    <span class="marquee-item">End-to-End Operations</span>
+    <span class="marquee-item">Hyderabad · Expanding Soon</span>
+    <span class="marquee-item">Cricket Leagues</span>
+    <span class="marquee-item">Football Tournaments</span>
+    <span class="marquee-item">Badminton Circuits</span>
+    <span class="marquee-item">Team Offsites</span>
+    <span class="marquee-item">Corporate Sports Days</span>
+    <span class="marquee-item">End-to-End Operations</span>
+    <span class="marquee-item">Hyderabad · Expanding Soon</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     WHY PLAYONIX  (moved up per locked order; real Gallup stat)
+     ════════════════════════════════════════════════════════════ -->
+<section id="why-companies" class="sec sec-darker">
+  <div class="why-layout">
+    <div class="why-image reveal">
+      <img src="{% static 'images/why-playonix.jpg' %}" alt="Colleagues playing foosball together" loading="lazy">
+      <div class="why-image-tag">
+        <div class="big">20%</div>
+        <div class="small">Global Employee Engagement — Gallup, 2026</div>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="eyebrow">Why Playonix</div>
+      <h2 class="sec-title">We Don't Run<br><em>One-Off Events.</em></h2>
+      <p style="color:var(--grey-light);font-size:0.9rem;line-height:1.7;margin-bottom:0.5rem">
+        Gallup's State of the Global Workplace report found employee engagement has dropped to its lowest level since 2020. We build a sports culture inside your company — recurring, community-driven, and something your employees actually look forward to every week.
+      </p>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-icon">🔄</div>
+          <div>
+            <h3>Year-Round Engagement</h3>
+            <p>Structured seasons — not one-off days. Employees stay engaged month after month.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">⚙️</div>
+          <div>
+            <h3>Zero HR Overhead</h3>
+            <p>We run everything. Your HR team approves the plan and attends the final. That's it.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">📈</div>
+          <div>
+            <h3>Measurable Impact</h3>
+            <p>Post-season participation reports, feedback scores, and engagement data you can present to leadership.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-icon">🏙️</div>
+          <div>
+            <h3>Multi-Location Ready</h3>
+            <p>Running offices across cities? We coordinate consistent programs across all your locations simultaneously.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SERVICES
+     ════════════════════════════════════════════════════════════ -->
+<section id="services" class="sec">
+  <div class="intro reveal">
+    <div class="eyebrow">What We Do</div>
+    <h2 class="sec-title">One Platform.<br><em>Every Sport.</em></h2>
+    <p>From regular weekly leagues to annual sports days and high-energy offsites — we handle everything so your HR team doesn't have to.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal d1">
+      <div class="svc-num">01 — LEAGUES</div>
+      <img class="svc-img" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=700&q=80" alt="Corporate Leagues" loading="lazy">
+      <div class="svc-title">Corporate Leagues &amp; Tournaments</div>
+      <div class="svc-desc">Season-long inter-company and intra-company leagues with full match scheduling, umpires, scorecards, and league tables. We run the competition — your employees just play.</div>
+      <div class="svc-tags"><span class="tag">Cricket</span><span class="tag">Football</span><span class="tag">Badminton</span><span class="tag">+More</span></div>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="svc-num">02 — OFFSITES</div>
+      <img class="svc-img" src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt="Sports Offsite" loading="lazy">
+      <div class="svc-title">Sports-Integrated Offsites</div>
+      <div class="svc-desc">Replace boring team retreats with high-energy, sports-driven experiences. We design custom formats — multi-sport Olympics, mini tournaments, relay races — tailored for your team size and culture.</div>
+      <div class="svc-tags"><span class="tag">1-Day</span><span class="tag">Weekend</span><span class="tag">Multi-Sport</span></div>
+    </div>
+    <div class="service-card reveal d3">
+      <div class="svc-num">03 — OPERATIONS</div>
+      <img class="svc-img" src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?w=700&q=80" alt="Sports Management" loading="lazy">
+      <div class="svc-title">End-to-End Sports Management</div>
+      <div class="svc-desc">Venue booking, equipment, referees, scorekeeping, photography, trophies, and post-event reports. We manage every operational detail from kickoff to final whistle.</div>
+      <div class="svc-tags"><span class="tag">Venue</span><span class="tag">Equipment</span><span class="tag">Referees</span><span class="tag">Photos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CATALOGUE — Sports & Games + Wellness
+     Content is admin-editable via CatalogueCategory / CatalogueItem.
+     ════════════════════════════════════════════════════════════ -->
+<section id="catalogue" class="sec" style="padding:0;">
+  <div class="catalogue-layout">
+    <div class="catalogue-visual reveal">
+      <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=900&q=80" alt="Sports and games we offer" loading="lazy">
+      <div class="catalogue-visual-text">
+        <div class="eyebrow">The Catalogue</div>
+        <h2>Sports you grew up<br><em>loving.</em><br>Wellness you need<br><em>today.</em></h2>
+        <p>Mix and match. We design programs around what your people actually want to show up for — and quietly add the wellness layers their bodies are asking for.</p>
+      </div>
+    </div>
+
+    <div class="catalogue-panels reveal d2">
+      <div>
+        <div class="catalogue-group-label">Sports &amp; Games We Offer</div>
+        <div class="catalogue-grid">
+          {% for category in sports_categories %}
+          <div class="catalogue-card">
+            <div class="catalogue-card-title">{{ category.name }}</div>
+            <ul class="catalogue-card-list">
+              {% for item in category.items.all %}
+              <li>{{ item.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div>
+        <div class="catalogue-group-label">Wellness &amp; Team Development</div>
+        <div class="catalogue-grid">
+          {% for category in wellness_categories %}
+          <div class="catalogue-card wellness-card">
+            <div class="catalogue-card-title">{{ category.name }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     HOW IT WORKS
+     ════════════════════════════════════════════════════════════ -->
+<section id="how" class="sec sec-darker">
+  <div class="how-layout">
+    <div>
+      <div class="eyebrow reveal">How It Works</div>
+      <h2 class="sec-title reveal">Up &amp; Running<br><em>in 2 Weeks.</em></h2>
+      <div class="steps">
+        <div class="step reveal d1">
+          <div class="step-dot">01</div>
+          <div class="step-body">
+            <h3>Discovery Call</h3>
+            <p>We understand your team size, preferred sports, timeline, and budget. Takes 30 minutes.</p>
+          </div>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-dot">02</div>
+          <div class="step-body">
+            <h3>Custom Program Design</h3>
+            <p>Our team builds a tailored league or event structure — formats, fixtures, venues, and timeline.</p>
+          </div>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-dot">03</div>
+          <div class="step-body">
+            <h3>Launch &amp; Operate</h3>
+            <p>We handle all logistics on the ground. Your employees register, show up, and play.</p>
+          </div>
+        </div>
+        <div class="step reveal d4">
+          <div class="step-dot">04</div>
+          <div class="step-body">
+            <h3>Report &amp; Renew</h3>
+            <p>Post-season engagement reports, feedback, and a seamless renewal into the next season.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visual reveal d2">
+      <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=900&q=80" alt="Corporate team sports" loading="lazy">
+      <div class="how-visual-badge">
+        <div class="big-num">12+</div>
+        <div class="badge-label">Sports &amp; Formats Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PACKAGES
+     Content is admin-editable via Package / PackageFeature models.
+     ════════════════════════════════════════════════════════════ -->
+<section id="packages" class="sec sec-dark">
+  <div class="reveal">
+    <div class="eyebrow">Our Packages</div>
+    <h2 class="sec-title">Plans Built for<br><em>Every Company.</em></h2>
+  </div>
+  <div class="packages-grid">
+    {% for package in packages %}
+    <div class="pkg-card{% if package.is_featured %} featured-pkg{% endif %} reveal d{{ forloop.counter }}">
+      <div class="pkg-badge">{{ package.badge_label }}</div>
+      <div class="pkg-title">{{ package.name }}</div>
+      <div class="pkg-desc">{{ package.description }}</div>
+      <div class="pkg-includes">
+        {% for feature in package.features.all %}
+        <div class="pkg-item"><span class="pkg-check">✓</span> {{ feature.text }}</div>
+        {% endfor %}
+      </div>
+      <a href="{% url 'contact' %}" class="pkg-cta {% if package.is_featured %}pkg-cta-solid{% else %}pkg-cta-outline{% endif %}" style="text-decoration:none;">{{ package.cta_label }}</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     TESTIMONIALS / VOICES  (in page, not in header nav)
+     ════════════════════════════════════════════════════════════ -->
+<section id="testimonials" class="sec sec-darker">
+  <div class="reveal">
+    <div class="eyebrow">What People Say</div>
+    <h2 class="sec-title">Teams <em>Love It.</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    {% for t in testimonials %}
+    <div class="testi-card reveal d{{ forloop.counter }}">
+      <div class="testi-stars">{% for i in "12345" %}{% if forloop.counter <= t.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
+      <p class="testi-quote">"{{ t.quote }}"</p>
+      <div class="testi-author">
+        <div class="author-avatar">{{ t.author_initials }}</div>
+        <div><div class="author-name">{{ t.author_name }}</div><div class="author-role">{{ t.author_role }}</div></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CITIES  (in page, not in header nav)
+     ════════════════════════════════════════════════════════════ -->
+<section id="cities" class="sec sec-dark">
+  <div class="cities-intro">
+    <div class="reveal">
+      <div class="eyebrow">Where We Operate</div>
+      <h2 class="sec-title">Currently in<br><em>Hyderabad.</em><br>Expanding Fast.</h2>
+      <p style="color:var(--grey-light);font-size:0.88rem;line-height:1.75;margin-top:1rem">We're building India's first corporate sports network, starting with Hyderabad and scaling to every major metro over the next 18 months.</p>
+    </div>
+    <div>
+      <div class="city-map reveal d2">
+        <div class="city-pins">
+          {% for city in cities %}
+          <div class="city-pin {% if city.is_live %}active{% else %}upcoming{% endif %}">{{ city.name }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div style="display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <div><span style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red-bright)">● Live</span><span style="font-size:0.7rem;color:var(--grey);margin-left:0.4rem">Hyderabad</span></div>
+        <div><span style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey)">○ Coming Soon</span><span style="font-size:0.7rem;color:var(--grey);margin-left:0.4rem">More cities in 2026</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FINAL CTA → routes to /contact
+     ════════════════════════════════════════════════════════════ -->
+<section id="final-cta">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Ready to Build<br>Your Sports Culture?</h2>
+      <p>Talk to our team. We'll design a program around your company, your people, and your timeline — no obligation.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="{% url 'contact' %}" class="btn-black" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Book a Free Demo</a>
+      <p style="font-size:0.72rem;opacity:0.65;margin-top:0.5rem">📍 Currently serving Hyderabad &amp; surrounding areas</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

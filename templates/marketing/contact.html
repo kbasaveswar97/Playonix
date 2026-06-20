@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Get a Proposal — Playonix{% endblock %}
+{% block meta_description %}Tell us about your team and we'll send a draft 12-month sports & wellness program built for your headcount and locations.{% endblock %}
+
+{% block extra_scripts %}
+{% load static %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section id="contact-page">
+  <div class="contact-layout">
+
+    <!-- LEFT: Intro + meta -->
+    <div class="contact-intro reveal">
+      <div class="eyebrow">Get a Proposal</div>
+      <h1>Tell us about<br>your team.<br>We'll send a<br>calendar.</h1>
+      <p>Share a few details. Within one business day you'll get a draft 12-month plan with formats, venues, and indicative budgets — built for your headcount and locations.</p>
+
+      <div class="contact-meta">
+        <div class="contact-meta-block">
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:hello@playonix.in">hello@playonix.in</a></div>
+        </div>
+        <div class="contact-meta-block">
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:+919849289071">+91 98492 89071</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="contact-form-card reveal d2">
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="{{ form.company_name.id_for_label }}">Company Name <span class="req">*</span></label>
+            {{ form.company_name }}
+            {% if form.company_name.errors %}<div class="form-errors">{{ form.company_name.errors.0 }}</div>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.contact_person.id_for_label }}">Contact Person <span class="req">*</span></label>
+            {{ form.contact_person }}
+            {% if form.contact_person.errors %}<div class="form-errors">{{ form.contact_person.errors.0 }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="{{ form.work_email.id_for_label }}">Work Email <span class="req">*</span></label>
+            {{ form.work_email }}
+            {% if form.work_email.errors %}<div class="form-errors">{{ form.work_email.errors.0 }}</div>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.phone.id_for_label }}">Phone</label>
+            {{ form.phone }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label class="form-label" for="{{ form.employee_count.id_for_label }}">Employee Count</label>
+            {{ form.employee_count }}
+          </div>
+        </div>
+
+        <div class="form-group full" style="margin-bottom:1.4rem;">
+          <label class="form-label">Interested In</label>
+          <div class="checkbox-grid">
+            <label class="checkbox-tile">
+              {{ form.interested_annual_calendar }}
+              Annual Sports Calendar
+            </label>
+            <label class="checkbox-tile">
+              {{ form.interested_tournaments }}
+              Tournaments / Leagues
+            </label>
+            <label class="checkbox-tile">
+              {{ form.interested_wellness }}
+              Wellness Sessions
+            </label>
+            <label class="checkbox-tile">
+              {{ form.interested_custom }}
+              Custom Program
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group full" style="margin-bottom:1.4rem;">
+          <label class="form-label" for="{{ form.message.id_for_label }}">Anything we should know?</label>
+          {{ form.message }}
+        </div>
+
+        <button type="submit" class="form-submit-btn">↗ Request a Proposal</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

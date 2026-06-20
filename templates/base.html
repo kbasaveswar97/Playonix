@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Playonix — Corporate Sports Engagement{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}Playonix runs recurring corporate sports leagues, nostalgia games, and workplace wellness programs for companies across India.{% endblock %}">
+
+<!-- ───── OPEN GRAPH (controls link previews on WhatsApp/LinkedIn/Slack/email) ─────
+     SITE_IMAGES.og_image below is the single place to swap in a real banner.
+     Recommended size: 1200x630px. -->
+<meta property="og:title" content="{% block og_title %}Playonix — Corporate Sports Engagement{% endblock %}">
+<meta property="og:description" content="{% block og_description %}Relive the games you grew up with. Reconnect with the people you work with.{% endblock %}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:image" content="{% block og_image %}{% static 'images/og-banner.jpg' %}{% endblock %}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- NAV — locked structure: Why Us? / Services / Catalogue / How it works? / Packages / Get a Proposal -->
+<nav>
+  <a href="{% url 'home' %}" class="nav-brand">
+    <div class="nav-p-icon">P</div>
+    <span class="nav-wordmark">PLAYONIX</span>
+  </a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="{% url 'home' %}#why-companies">Why Us?</a></li>
+    <li><a href="{% url 'home' %}#services">Services</a></li>
+    <li><a href="{% url 'home' %}#catalogue">Catalogue</a></li>
+    <li><a href="{% url 'home' %}#how">How it works?</a></li>
+    <li><a href="{% url 'home' %}#packages">Packages</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="{% url 'contact' %}" class="nav-btn nav-btn-solid" style="display:inline-flex;align-items:center;text-decoration:none;">Get a Proposal</a>
+  </div>
+</nav>
+
+{% if messages %}
+<div class="site-messages">
+  {% for message in messages %}
+    <div class="message-success">{{ message }}</div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<!-- FOOTER — locked structure -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-p-mark">
+        <div class="p-box">P</div>
+        <span class="p-name">PLAYONIX</span>
+      </div>
+      <p class="footer-brand-desc">India's corporate sports engagement platform. We turn colleagues into teammates through year-round leagues, tournaments, and sports offsites.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="{% url 'home' %}#services">Corporate Leagues</a></li>
+        <li><a href="{% url 'home' %}#services">Sports Offsites</a></li>
+        <li><a href="{% url 'home' %}#services">Tournament Management</a></li>
+        <li><a href="{% url 'home' %}#services">Annual Sports Day</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'blog' %}">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@playonix.in">hello@playonix.in</a></li>
+        <li>Hyderabad</li>
+        <li><a href="{% url 'contact' %}">Partner With Us</a></li>
+        <li><a href="{% url 'contact' %}">Sponsor a League</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Playonix. All rights reserved.</span>
+    <span class="footer-copy">Engage · Compete · Belong</span>
+  </div>
+</footer>
+
+<script>
+// Scroll-reveal animation (unchanged from original build)
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+}, { threshold: 0.1 });
+els.forEach(el => io.observe(el));
+
+// Mobile nav toggle
+const burger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+if (burger) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  // Close menu when a link is tapped
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+</script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>
