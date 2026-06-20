@@ -89,9 +89,7 @@ class Command(BaseCommand):
 
         sports_data = [
             ("Sports Experiences", ["Cricket", "Badminton", "Football", "Pickleball"]),
-            ("Childhood Throwback Games", ["Seven Stones", "Kho Kho", "Tug of War", "Sack Race", "Lemon & Spoon"]),
-            ("Social Connection Games", ["Treasure Hunt", "Human Bingo", "Pictionary", "Charades"]),
-            ("Team Challenges", ["Obstacle Courses", "Problem Solving Challenges", "Leadership Games"]),
+            ("Childhood Throwback Games", ["Seven Stones", "Kho Kho", "Tug of War", "Sack Race", "Lemon & Spoon"])
         ]
         for i, (cat_name, items) in enumerate(sports_data):
             cat = CatalogueCategory.objects.create(group='sports', name=cat_name, order=i)

@@ -161,8 +161,9 @@ h2.sec-title {
 h2.sec-title em { font-style: normal; color: var(--red-bright); }
 
 /* ─── SERVICES ─── */
-#services .intro { max-width: 580px; margin-bottom: 4rem; }
-#services .intro p { color: var(--grey-light); font-size: 0.95rem; line-height: 1.75; }
+/* Shared section-header block — used by #services and #catalogue so they stay in sync. */
+.intro { max-width: 580px; margin-bottom: 4rem; }
+.intro p { color: var(--grey-light); font-size: 0.95rem; line-height: 1.75; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
 .service-card {
   background: var(--black-2); padding: 2.8rem 2.2rem;
@@ -408,12 +409,8 @@ footer {
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .packages-grid { grid-template-columns: repeat(3, 1fr); }
 
-  .how-layout, .why-layout, .cities-intro { gap: 3rem; }
+  .how-layout, .why-layout, .cities-intro, .catalogue-layout { gap: 3rem; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; }
-
-  .catalogue-layout { grid-template-columns: 1fr; }
-  .catalogue-visual { min-height: 320px; }
-  .catalogue-grid { grid-template-columns: repeat(3, 1fr); }
 
   .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
 
@@ -468,28 +465,14 @@ footer {
 
 /* ─── CATALOGUE ─── */
 #catalogue { background: var(--black-3); }
-.catalogue-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 0; align-items: stretch; }
-.catalogue-visual {
-  position: relative; min-height: clamp(360px, 45vw, 560px); overflow: hidden;
-  background: linear-gradient(160deg, var(--black-4), var(--black-2));
-}
-.catalogue-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: grayscale(15%); }
-.catalogue-visual::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(10,10,10,0.95) 5%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.25) 100%);
-}
-.catalogue-visual-text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 3rem 2.5rem; }
-.catalogue-visual-text .eyebrow { color: var(--red-bright); }
-.catalogue-visual-text h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 1rem; }
-.catalogue-visual-text h2 em { font-style: normal; color: var(--red-bright); }
-.catalogue-visual-text p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 380px; }
-
-.catalogue-panels { padding: 3rem 2.5rem; display: flex; flex-direction: column; gap: 2.5rem; }
+.catalogue-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3.5rem; align-items: start; }
+.catalogue-layout .intro { margin-bottom: 0; }
+.catalogue-panels { display: flex; flex-direction: column; gap: 2.5rem; }
 .catalogue-group-label {
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--grey); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
 }
-.catalogue-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.catalogue-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .catalogue-card {
   padding: 1.4rem 1.2rem; border: 1px solid var(--border); background: var(--black-2);
   transition: all 0.25s; cursor: default;
@@ -583,8 +566,8 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
   .nav-links a { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
   .nav-links li:last-child a { border-bottom: none; }
 
+  .catalogue-layout { grid-template-columns: 1fr; }
   .catalogue-grid { grid-template-columns: 1fr 1fr; }
-  .catalogue-panels { padding: 2.5rem 6%; }
 
   .form-row { grid-template-columns: 1fr; }
   #contact-page { padding: 8rem 6% 4rem; }
@@ -607,8 +590,6 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
   .testi-card { padding: 1.6rem; }
 
   .catalogue-grid { grid-template-columns: 1fr 1fr; }
-  .catalogue-panels { padding: 2.5rem 5%; }
-  .catalogue-visual-text { padding: 2rem 1.6rem; }
 
   .checkbox-grid { grid-template-columns: 1fr; }
   .contact-form-card { padding: 1.6rem; }

@@ -76,8 +76,7 @@ class Testimonial(models.Model):
 # ──────────────────────────────────────────────────────────────────
 class CatalogueCategory(models.Model):
     """
-    A category card in the Catalogue section, e.g. 'Sports Experiences',
-    'Childhood Throwback Games', 'Sports Psychology' (wellness side).
+    A category card in the Catalogue section, e.g. 'Sports Experiences', 'Sports Psychology' (wellness side).
     """
     GROUP_CHOICES = [
         ('sports', 'Sports & Games'),

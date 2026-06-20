@@ -144,19 +144,18 @@
      CATALOGUE — Sports & Games + Wellness
      Content is admin-editable via CatalogueCategory / CatalogueItem.
      ════════════════════════════════════════════════════════════ -->
-<section id="catalogue" class="sec" style="padding:0;">
+<section id="catalogue" class="sec">
   <div class="catalogue-layout">
-    <div class="catalogue-visual reveal">
-      <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=900&q=80" alt="Sports and games we offer" loading="lazy">
-      <div class="catalogue-visual-text">
-        <div class="eyebrow">The Catalogue</div>
-        <h2>Sports you grew up<br><em>loving.</em><br>Wellness you need<br><em>today.</em></h2>
-        <p>Mix and match. We design programs around what your people actually want to show up for — and quietly add the wellness layers their bodies are asking for.</p>
-      </div>
+    <!-- LEFT: heading block (reuses .intro styling like #services) -->
+    <div class="intro reveal">
+      <div class="eyebrow">The Catalogue</div>
+      <h2 class="sec-title">Sports You Love.<br><em>Wellness You Need.</em></h2>
+      <p>Mix and match. We design programs around what your people actually want to show up for — and quietly add the wellness layers their bodies are asking for.</p>
     </div>
 
+    <!-- RIGHT: category groups, grid wraps into 2 columns in this narrower space -->
     <div class="catalogue-panels reveal d2">
-      <div>
+      <div class="catalogue-group">
         <div class="catalogue-group-label">Sports &amp; Games We Offer</div>
         <div class="catalogue-grid">
           {% for category in sports_categories %}
@@ -172,7 +171,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="catalogue-group">
         <div class="catalogue-group-label">Wellness &amp; Team Development</div>
         <div class="catalogue-grid">
           {% for category in wellness_categories %}
@@ -264,6 +263,8 @@
 <!-- ════════════════════════════════════════════════════════════
      TESTIMONIALS / VOICES  (in page, not in header nav)
      ════════════════════════════════════════════════════════════ -->
+{% comment %} Testimonials hidden until we have real client quotes (placeholder content only). {% endcomment %}
+{% comment %}
 <section id="testimonials" class="sec sec-darker">
   <div class="reveal">
     <div class="eyebrow">What People Say</div>
@@ -282,6 +283,7 @@
     {% endfor %}
   </div>
 </section>
+{% endcomment %}
 
 <!-- ════════════════════════════════════════════════════════════
      CITIES  (in page, not in header nav)
