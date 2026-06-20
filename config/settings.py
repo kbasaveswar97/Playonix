@@ -9,8 +9,15 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from a local .env file (if present) BEFORE any
+# os.environ.get(...) calls below. The .env file is git-ignored and used for
+# local development only; in production (Render) the real env vars are set
+# in the dashboard, so the missing .env is simply a no-op.
+load_dotenv(BASE_DIR / '.env')
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -146,7 +153,7 @@ STORAGES = {
     },
     'staticfiles': {
         'BACKEND': (
-            'whitenoise.storage.CompressedManifestStaticFilesStorage'
+            'config.storage.NonStrictManifestStaticFilesStorage'
             if not DEBUG
             else 'django.contrib.staticfiles.storage.StaticFilesStorage'
         ),
