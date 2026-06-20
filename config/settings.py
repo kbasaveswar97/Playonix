@@ -8,6 +8,8 @@ in Cursor without prior Django experience.
 import os
 from pathlib import Path
 
+import dj_database_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -46,6 +48,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # WhiteNoise serves static files in production. Must come right after
+    # SecurityMiddleware and before everything else.
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,15 +83,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ──────────────────────────────────────────────────────────────────
 # DATABASE
 # ──────────────────────────────────────────────────────────────────
-# SQLite is fine for development and even small production loads.
-# When you outgrow it, swap this block for Postgres — everything
-# else (models, admin, views) stays exactly the same.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# In production we use a hosted PostgreSQL database (Neon) via the
+# DATABASE_URL environment variable. Locally, when DATABASE_URL is not
+# set, we fall back to SQLite so dev needs zero setup.
+# Models, admin, and views stay exactly the same either way.
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            env='DATABASE_URL',
+            conn_max_age=600,        # reuse connections for 10 min (Neon-friendly)
+            ssl_require=True,        # Neon requires SSL
+        ),
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -120,6 +135,23 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'  # used by `collectstatic` in production
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Static file storage backend.
+# In production (DEBUG=False) WhiteNoise serves compressed, hashed
+# (cache-busted) static files. In dev we keep Django's default so
+# `runserver` works without needing to run collectstatic first.
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': (
+            'whitenoise.storage.CompressedManifestStaticFilesStorage'
+            if not DEBUG
+            else 'django.contrib.staticfiles.storage.StaticFilesStorage'
+        ),
+    },
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

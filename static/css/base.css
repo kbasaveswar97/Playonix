@@ -59,8 +59,8 @@ nav {
   position: absolute; inset: 0;
   /* ───── HERO IMAGE SLOT ─────
      Swap this Unsplash placeholder for a real Playonix event photo.
-     If using Django static files: background: url('/static/images/hero-bg.jpg') center/cover no-repeat;
-     Drop the real file at static/images/hero-bg.jpg and use that path instead. */
+     To use a local static file, drop it at static/images/hero-bg.jpg and set the
+     background below to point at that file via the {% static %} path. */
   background: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600&q=80') center/cover no-repeat;
 }
 .hero-bg::after {
