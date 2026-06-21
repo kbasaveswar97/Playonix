@@ -506,7 +506,25 @@ footer {
 .contact-meta-block .value a { color: var(--white); }
 .contact-meta-block .value a:hover { color: var(--red-bright); }
 
-.contact-form-card { background: var(--black-2); border: 1px solid var(--border); padding: 2.5rem; }
+.contact-form-card { background: var(--black-2); border: 1px solid var(--border); padding: 2.5rem; min-height: 32rem; }
+.contact-form-success {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; min-height: 27rem; padding: 2rem 1rem;
+}
+.contact-success-badge {
+  width: 4.25rem; height: 4.25rem; border-radius: 50%;
+  background: var(--red-dim); color: var(--red-bright);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; font-weight: 800; margin-bottom: 1.6rem;
+  box-shadow: 0 0 0 6px rgba(204, 27, 27, 0.12);
+}
+.contact-success-heading {
+  font-size: clamp(1.25rem, 2.5vw, 1.45rem); font-weight: 800;
+  color: var(--white); margin-bottom: 0.85rem; letter-spacing: 0.01em;
+}
+.contact-success-text {
+  font-size: 0.9rem; line-height: 1.65; color: var(--grey-light); max-width: 22rem;
+}
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
 .form-group.full { grid-column: 1 / -1; }
@@ -544,14 +562,6 @@ select.form-control { cursor: pointer; appearance: none; background-image: url("
 .form-submit-btn:hover { background: var(--red-bright); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(204,27,27,0.4); }
 
 .form-errors { color: var(--red-bright); font-size: 0.78rem; margin-top: 0.3rem; }
-
-/* Django messages (success banner after submit) */
-.site-messages { padding: 1rem 6% 0; }
-.message-success {
-  background: rgba(204,27,27,0.12); border: 1px solid var(--red);
-  color: var(--white); padding: 1rem 1.5rem; font-size: 0.88rem;
-  max-width: 1200px; margin: 0 auto;
-}
 
 /* ─── RESPONSIVE ADDITIONS ─── */
 @media (max-width: 900px) {

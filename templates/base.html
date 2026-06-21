@@ -45,14 +45,6 @@
   </div>
 </nav>
 
-{% if messages %}
-<div class="site-messages">
-  {% for message in messages %}
-    <div class="message-success">{{ message }}</div>
-  {% endfor %}
-</div>
-{% endif %}
-
 {% block content %}{% endblock %}
 
 <!-- FOOTER — locked structure -->

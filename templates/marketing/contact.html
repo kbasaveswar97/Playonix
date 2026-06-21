@@ -16,7 +16,7 @@
     <div class="contact-intro reveal">
       <div class="eyebrow">Get a Proposal</div>
       <h1>Tell us about<br>your team.<br>We'll send a<br>calendar.</h1>
-      <p>Share a few details. Within one business day you'll get a draft 12-month plan with formats, venues, and indicative budgets — built for your headcount and locations.</p>
+      <p>Share a few details. Within one business day you'll get a plan with formats, venues, and indicative budgets — built for your headcount and locations.</p>
 
       <div class="contact-meta">
         <div class="contact-meta-block">
@@ -30,8 +30,15 @@
       </div>
     </div>
 
-    <!-- RIGHT: Form -->
+    <!-- RIGHT: Form or success confirmation -->
     <div class="contact-form-card reveal d2">
+      {% if submitted_success %}
+      <div class="contact-form-success">
+        <div class="contact-success-badge" aria-hidden="true">&#10003;</div>
+        <h2 class="contact-success-heading">We've got your details.</h2>
+        <p class="contact-success-text">Expect a call and adraft proposal in your inbox within one business day.</p>
+      </div>
+      {% else %}
       <form method="post" novalidate>
         {% csrf_token %}
 
@@ -96,6 +103,7 @@
 
         <button type="submit" class="form-submit-btn">↗ Request a Proposal</button>
       </form>
+      {% endif %}
     </div>
 
   </div>

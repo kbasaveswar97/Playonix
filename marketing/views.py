@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from .forms import ContactForm
 from .models import Package, Testimonial, CatalogueCategory, City
@@ -42,6 +42,8 @@ def contact(request):
     if preset_interest in interest_field_map:
         initial[interest_field_map[preset_interest]] = True
 
+    submitted_success = request.GET.get('submitted') == '1'
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -69,9 +71,13 @@ def contact(request):
             except Exception:
                 pass
 
-            messages.success(request, "Thanks! We've received your details and will be in touch within one business day.")
-            return redirect('contact')
-    else:
+            return redirect(reverse('contact') + '?submitted=1')
+    elif not submitted_success:
         form = ContactForm(initial=initial)
+    else:
+        form = None
 
-    return render(request, 'marketing/contact.html', {'form': form})
+    return render(request, 'marketing/contact.html', {
+        'form': form,
+        'submitted_success': submitted_success,
+    })
